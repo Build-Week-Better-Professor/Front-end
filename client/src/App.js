@@ -10,15 +10,16 @@ function App() {
   return (
     <Router>
     <div className="App">
-      <h1>Better Professor App</h1>
       <Header />
+      <h1 className="app-title">Better Professor App</h1>
       <Login />
     <div className="main">
       <Switch>
       
-      {/* <PrivateRoute exact path="/private"/> */}
+      <PrivateRoute exact path="/private"/>
       <Route exact path="/login" component={Login}/>
-      {/* <Route exact path="register" /> */}
+      <Route exact path="/register"/>
+      <Route component={Login}/>
       </Switch>
     </div>
     </div>

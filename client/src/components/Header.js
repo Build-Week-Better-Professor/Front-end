@@ -7,9 +7,9 @@ const Header = props => {
 return (
 <div className="nav-bar">
 
-<Link to="/login">Login</Link>
-<Link to="register">Register</Link>
-<Link to="/private">Students</Link>
+<Link className="nav-links" to="/login">Login</Link>
+<Link className="nav-links" to="/register">Register</Link>
+<Link className="nav-links" to="/private">Students</Link>
 
 </div>
 )

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { Redirect } from 'react-router-dom';
 
@@ -28,10 +29,13 @@ const login = event => {
     };
 
     if (localStorage.getItem('token')) {
-        return <Redirect to='private' />
+        return <Redirect to='/private' />
     }
 
     return (
+     <div className="login-form-div"> 
+     
+      <h1 className="login-title">Log In</h1>
 
         <form onSubmit={login}>
         
@@ -50,8 +54,13 @@ const login = event => {
         placeholder='...enter password'
         onChange={handleChange}
         />
-        <button>Log In</button>
-        </form>   
+        <button className="login-button">LOG IN</button>
+        
+        <div className="create-acct">
+        <Link className="acct-link" to="/register">Create an Account</Link>
+        </div>
+        </form> 
+        </div>  
        )
 }
 export default Login;
