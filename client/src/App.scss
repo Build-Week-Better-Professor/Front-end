@@ -21,3 +21,66 @@
 .App-link {
   color: #09d3ac;
 }
+
+.nav-links {
+  text-decoration: none;
+  color: #996699;
+   }
+
+.nav-bar {
+  margin: 2rem 0;
+  display: flex;
+  justify-content: center;
+  justify-content: space-evenly;
+  }
+
+.app-title {
+  margin: 4rem 0 4rem 0;
+  color: #83365c;
+}
+
+.login-form-div {
+  border: 2px solid lightgray;
+  box-shadow: 0 0 10px 5px lightgray;
+  width: 45%;
+  margin: 0 auto;
+  height: 500px;
+
+  .login-title {
+    margin-top: 4rem;
+    
+  }
+
+  input {
+    // border: 2px solid red; 
+    display: flex;
+    margin: 0 auto;
+    width: 28%;
+    height: 1.8rem;
+  }
+
+  .login-button {
+    width: 29%;
+    height: 1.8rem;
+    margin-top: 1rem;
+    background: #457B9D;
+    color: white;
+    padding: 1rem 0 1.5rem 0;
+    font-size: 1rem;
+  }
+
+  .create-acct {
+  margin: 8rem 0 0 1rem;
+  width: 95%;
+  padding-top: 1rem;
+  border-top: 2px solid lightgray;
+  
+  
+  }
+  
+}
+
+.acct-link {
+text-decoration: none;
+color: rgb(67, 128, 214)
+}
