@@ -18,7 +18,7 @@ function App() {
       
       <PrivateRoute exact path="/private"/>
       <Route exact path="/login" component={Login}/>
-      <Route exact path="/register"/>
+      {/* <Route exact path="/register"/> */}
       <Route component={Login}/>
       </Switch>
     </div>

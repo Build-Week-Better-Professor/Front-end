@@ -6,7 +6,7 @@ import { Redirect } from 'react-router-dom';
 
 
 const Login = props => {
- const [input, setInput] = useState({username: '', password: ''})
+ const [input, setInput] = useState({ username: '', password: '' })
  
  const handleChange = event => {
     setInput({
@@ -39,6 +39,8 @@ const login = event => {
 
         <form onSubmit={login}>
         
+        
+
         <input 
         type= 'text'
         value={input.username}
