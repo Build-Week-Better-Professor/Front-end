@@ -6,11 +6,16 @@ import PrivateRoute from './components/PrivateRoute';
 
 
 import './App.scss';
+import DisplayForm from "./Registration/DisplayForm";
 
 function App() {
   return (
     <Router>
     <div className="App">
+ falmata-dawano
+      <h1>Better Professor App</h1>
+      <DisplayForm />
+    
       <Header />
       <h1 className="app-title">Better Professor App</h1>
       {/* <Login /> */}
@@ -23,6 +28,7 @@ function App() {
       
       </Switch>
     </div>
+ master
     </div>
     </Router>
   );
