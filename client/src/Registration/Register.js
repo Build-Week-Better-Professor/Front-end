@@ -1,13 +1,15 @@
 import React, {useState} from "react";
 import styled from "styled-components";
+import axios from "axios";
+
 
 const Register = () => {
     // gets data from form
     const [formData, setFormData] = useState({
-      firstName: "",
-      lastName: "",
-      email: "",
-      role: ""
+      username: "",
+      password: "",
+      first_name: "",
+      last_name: ""
     });
     // stores real time change in the form input
     const changeHandler = event => {
@@ -19,7 +21,10 @@ const Register = () => {
     // from PostUsers as props
     const submitForm = event => {
       event.preventDefault();
-      setFormData({ firstName: "", lastName: "", email: "", password: ""});
+      setFormData({ username: "", password: "", first_name: "", last_name: "",});
+      axios.post('https://better-professor-backend.herokuapp.com/users/register', formData) 
+              .then(res => console.log(res.data) )
+              .catch(err => console.log(err.response));
     }
     const StyledForm = styled.form`
     width: 50%;
@@ -70,30 +75,14 @@ const Register = () => {
     `;
     return (
       <StyledForm onSubmit={submitForm}>
-        <label htmlFor="firstName">First Name</label>
-        <input 
-              name="firstName" 
-              id="firstName" 
-              type="text" 
-              placeholder="first name..." 
-              onChange={changeHandler}
-              value={formData.firstName}/>
-        <label htmlFor="lastName">Last Name</label>
-        <input 
-              name="lastName" 
-              id="lastName" 
-              type="text" 
-              placeholder="last name..." 
-              onChange={changeHandler}
-              value={formData.lastName}/>
-          <label htmlFor="email">Email</label>
+          <label htmlFor="username">Username</label>
           <input 
-              name="email" 
-              id="email" 
-              type="email" 
-              placeholder="email..." 
+              name="username" 
+              id="username" 
+              type="text" 
+              placeholder="new username..." 
               onChange={changeHandler}
-              value={formData.email}/>
+              value={formData.username}/>
           <label htmlFor="password">Password</label>
           <input 
               name="password" 
@@ -102,6 +91,22 @@ const Register = () => {
               placeholder="new password..." 
               onChange={changeHandler}
               value={formData.password}/>
+          <label htmlFor="first_name">First Name</label>
+        <input 
+              name="first_name" 
+              id="first_name" 
+              type="text" 
+              placeholder="first name..." 
+              onChange={changeHandler}
+              value={formData.first_name}/>
+        <label htmlFor="last_name">Last Name</label>
+        <input 
+              name="last_name" 
+              id="last_name" 
+              type="text" 
+              placeholder="last name..." 
+              onChange={changeHandler}
+              value={formData.last_name}/>
         <button type="submit">Register</button>
       </StyledForm>
     );
