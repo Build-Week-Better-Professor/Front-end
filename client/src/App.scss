@@ -84,3 +84,63 @@
 text-decoration: none;
 color: rgb(67, 128, 214)
 }
+
+// Message form styling
+
+.msg-form {
+  border: 2px solid lightgray;
+  margin: 0 auto;
+  width: 60%;
+  height: 420px;
+
+  .msg-name {
+    // border: 2px solid green;
+    position: relative;
+    top: -16rem;
+    margin: 2rem 0 0 -3.8rem;
+    padding: .2rem;
+    
+  }
+
+  .name-title {
+    position: relative;
+    left: -1rem;
+    top: -17rem;
+  
+  }
+
+  .email-title {
+    // border: 2px solid purple; 
+    position: relative;
+    left: 6.5rem;
+    top: -17rem;
+     
+  }
+
+  .msg-email {
+    // border: 2px solid purple;  
+    position: relative;
+    top: -16rem;
+    margin: 2rem 0 0 4rem;
+    padding: .2rem;
+  }
+}
+
+.msg-title {
+  position: relative;
+  left: 8.3rem;
+  top: -15rem;
+}
+
+.msg-box {
+  height: 250px;
+  width: 250px;
+  position: relative;
+  top: 1.2rem;
+  margin: 2rem 0 0 4rem;
+  padding: .2rem;
+}
+
+.msg-btn {
+  margin: 1rem 0 0 19rem;
+  }

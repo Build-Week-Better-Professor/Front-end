@@ -1,6 +1,7 @@
 import React from "react";
 import Register from "./Register";
 import styled from "styled-components";
+import Header from '../components/Header';
 
 const DisplayForm = () => {
 
@@ -18,10 +19,14 @@ const DisplayForm = () => {
         
     `;
     return (
+      <>  
+    <Header />
     <RegisterPage>
+        
         <h2>Register to gain access to premium features today!</h2>
         <Register />
     </RegisterPage>
+    </> 
     );
 }
 export default DisplayForm;
