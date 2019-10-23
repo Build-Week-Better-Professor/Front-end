@@ -2,25 +2,25 @@ import React, {useState, useEffect} from "react";
 import axios from "axios";
 import StudentForm from "./StudentsForm";
 import styled from "styled-components";
+import ProjectForm from "./ProjectForm";
 const StudentList = props => {
   const [students, setStudents] = useState([])
-    useEffect(() => {
-    const id = props.match.params.userID;
-    console.log(id);
-       axios
-        .get(`https://better-professor-backend.herokuapp.com/students/user/${id}`)
-        .then(response => {
-            setStudents(response.data);
-            console.log(response.data);
-        })
-        .catch(error => {
-            console.error(error);
-        });
+//     useEffect(() => {
+//     const id = props.match.params.userID;
+//     console.log(id);
+//        axios
+//         .get(`https://better-professor-backend.herokuapp.com/students/user/${id}`)
+//         .then(response => {
+//             setStudents(response.data);
+//             console.log(response.data);
+//         })
+//         .catch(error => {
+//             console.error(error);
+//         });
 
-  },[]);
+//   },[]);
   const RegisterPage = styled.div`
         display: flex;
-        flex-direction:column;
         align-items: center;
         border: 2px solid gray;
         padding-bottom: 3%;
@@ -35,7 +35,8 @@ const StudentList = props => {
     <RegisterPage>
         <h2>Add Students</h2>
         <StudentForm />
-        {students.map((student, index) => {
+        <ProjectForm />
+        {/* {students.map((student, index) => {
             return (
             <div key={index}>
                 <h2>{student.student_name}</h2>
@@ -44,7 +45,7 @@ const StudentList = props => {
                 <span>{student.deadline}</span>
             </div>
             );
-        })}
+        })} */}
     </RegisterPage>
   );
 }

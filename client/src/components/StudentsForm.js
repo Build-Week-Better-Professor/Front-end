@@ -1,28 +1,37 @@
 import React, { useState } from "react";
-import axios from "axios";
 import styled from "styled-components";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
-const StudentForm = props => {
+const StudentForm = (props) => {
   const [student, setStudent] = useState({
-    student_name: "",
-    major: "",
-    project_name: "",
-    deadline: ""
+    student_name: '',
+    major: '',
+    user_id: localStorage.getItem('user_id'),
   });
-  const changeHandler = event => {
+
+  const changeHandler = (event) => {
     setStudent({ ...student, [event.target.name]: event.target.value });
     console.log(event.target.value);
   };
-  const submitForm = event => {
+
+  const submitForm = (event) => {
     event.preventDefault();
-    setStudent({ student_name: "", major: "", project_name: "", deadline: "" });
-    axios.post(`https://better-professor-backend.herokuapp.com/students`, student)
-              .then(res => console.log(res.data) )
-              .catch(err => console.log(err.response));
+
+    axiosWithAuth()
+      .post(`/students`, student)
+      .then((res) => {
+        console.log(res.data);
+        setStudent({
+          student_name: '',
+          major: '',
+          user_id: localStorage.getItem('user_id'),
+        });
+      })
+      .catch((err) => console.log(err.response));
   };
 
   const StyledForm = styled.form`
-    width: 50%;
+    width: 20%;
     height: 70vh;
     margin: auto 100px;
     padding: 32px;
@@ -87,24 +96,6 @@ const StudentForm = props => {
         placeholder="major..."
         onChange={changeHandler}
         value={student.major}
-      />
-      <label htmlFor="project_name">Project</label>
-      <input
-        name="project_name"
-        id="project_name"
-        type="text"
-        placeholder="project name..."
-        onChange={changeHandler}
-        value={student.project_name}
-      />
-      <label htmlFor="deadline">Deadline</label>
-      <input
-        name="deadline"
-        id="deadline"
-        type="date"
-        placeholder="deadline"
-        onChange={changeHandler}
-        value={student.deadline}
       />
       <button type="submit">Add Student</button>
     </StyledForm>
