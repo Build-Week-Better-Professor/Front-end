@@ -23,6 +23,7 @@ const login = event => {
     .post(`/users/login`, input)
     .then(res => {
         localStorage.setItem('token', res.data.token);
+        localStorage.setItem('user_id', res.data.id);
         props.history.push('/private')
     })
       .catch(err => console.log(err.reponse))

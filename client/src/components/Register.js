@@ -1,8 +1,8 @@
 import React from "react";
-import Register from "./Register";
+import RegisterForm from "./RegisterForm";
 import styled from "styled-components";
 
-const DisplayForm = () => {
+const Register = () => {
 
     const RegisterPage = styled.div`
         display: flex;
@@ -20,8 +20,8 @@ const DisplayForm = () => {
     return (
     <RegisterPage>
         <h2>Register to gain access to premium features today!</h2>
-        <Register />
+        <RegisterForm />
     </RegisterPage>
     );
 }
-export default DisplayForm;
+export default Register;

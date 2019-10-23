@@ -3,18 +3,16 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Login from './components/Login';
 import Header from './components/Header';
 import PrivateRoute from './components/PrivateRoute';
+import StudentList from "./components/StudentList";
+import Register from "./components/Register";
 
 
 import './App.scss';
-import DisplayForm from "./Registration/DisplayForm";
-
+import DisplayForm from "./components/Register";
 function App() {
   return (
     <Router>
     <div className="App">
- falmata-dawano
-      <h1>Better Professor App</h1>
-      <DisplayForm />
     
       <Header />
       <h1 className="app-title">Better Professor App</h1>
@@ -22,13 +20,12 @@ function App() {
     <div className="main">
       <Switch>
       
-      <PrivateRoute exact path="/private"/>
+      <PrivateRoute path="/private" component={StudentList}/>
       <Route exact path="/login" component={Login}/>
-      {/* <Route exact path="/register"/> */}
+      <Route exact path="/register" component={Register}/>
       
       </Switch>
     </div>
- master
     </div>
     </Router>
   );
