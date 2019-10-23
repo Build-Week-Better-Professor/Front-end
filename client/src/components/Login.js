@@ -24,9 +24,11 @@ const login = event => {
     axiosWithAuth()
     .post(`/users/login`, input)
     .then(res => { 
+        console.log('DATA',res.data);
         localStorage.setItem('token', res.data.token);
         props.history.push('/private')
     })
+     
       .catch(err => console.log(err.reponse))
     };
 

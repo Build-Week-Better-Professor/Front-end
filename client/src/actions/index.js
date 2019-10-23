@@ -22,9 +22,9 @@ export const POST_FAILURE =  'POST_FAILURE';
 
 export const postList = (student) => dispatch => {
     dispatch({ type: POSTING_DATA })
-
+  console.log('STUDENT',student);
     axiosWithAuth()
-    .post('/students', student)
+    .post('/messages', student)
     // .then(res => console.log(res))
 .then(res => dispatch({ type: POST_COMPLETE, payload: res.data}))
 .catch(err => dispatch({ type: POST_FAILURE, payload: err.response}))

@@ -1,33 +1,28 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Login from './components/Login';
-// import Header from './components/Header';
 import PrivateRoute from './components/PrivateRoute';
-import Register from './Registration/Register';
+import DisplayForm from './Registration/DisplayForm';
 import Messages from './components/Messages';
+import StudentList from './Registration/StudentList';
 
 
 import './App.scss';
-import DisplayForm from "./Registration/DisplayForm";
 
 function App() {
   return (
     <Router>
     <div className="App">
  
-      {/* <h1>Better Professor App</h1> */}
-      <DisplayForm />
-      <Messages />
     
-      {/* <Header /> */}
-      {/* <h1 className="app-title">Better Professor App</h1> */}
-      {/* <Login /> */}
+      {/* <Messages /> */}
+    
     <div className="main">
       <Switch>
       
-      <PrivateRoute exact path="/private" component={Register}/>
+      <PrivateRoute exact path="/private" component={StudentList}/>
       <Route exact path="/login" component={Login}/>
-      <Route exact path="/register"/>
+      <Route exact path="/register" component={DisplayForm}/>
       
       </Switch>
     </div>

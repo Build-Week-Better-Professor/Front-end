@@ -5,7 +5,7 @@ import { fetchList, postList } from '../actions';
 
 const Messages = props => {
 console.log('NEW', props);
-const [input, setInput] = useState({name: '', email: '', message: ''})
+const [input, setInput] = useState({message: '', date: '', student_id: ''})
 
 const handleChange = event => {
     setInput({
@@ -16,7 +16,8 @@ const handleChange = event => {
 
   const handleSubmit = event => {
    event.preventDefault();
-   props.postList()
+   props.postList(input)
+   
 }
 
 
@@ -27,21 +28,21 @@ const handleChange = event => {
     
     <form className="msg-form" onSubmit={handleSubmit}>
     <h2>Message Form</h2>
-    <label className="name-title">Name</label>
+    <label className="name-title">Student</label>
     <input className="msg-name"
     type="text" 
-    name="name"
-    value={input.name}
+    name="student_id"
+    value={input.student_id}
     placeholder="...enter name"
     onChange={handleChange}
     />
     
-    <label className="email-title">Email</label> 
-    <input className="msg-email"
-    type="text" 
-    name="email"
-    value={input.email}
-    placeholder="...enter email"
+    <label className="date-title">Date</label> 
+    <input className="msg-date"
+    type="date" 
+    name="date"
+    value={input.date}
+    placeholder="...enter date"
     onChange={handleChange} 
     />
     
@@ -51,17 +52,10 @@ const handleChange = event => {
     type="text"
     value={input.text}
     name="message"
-    // id="message"
     placeholder="Send a message..."
     onChange={handleChange}
     />
-    {/* <input className="msg-box"
-    type="text" 
-    name="message"
-    // value
-    placeholder=""
-    // onChange={handleChange} 
-    />  */}
+    
     <button className="msg-btn" type="submit">Submit</button> 
     </form>
     </div>
