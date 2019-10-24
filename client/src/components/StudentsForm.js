@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+import Messages from './Messages';
 
 const StudentForm = (props) => {
   const [student, setStudent] = useState({
@@ -8,6 +9,20 @@ const StudentForm = (props) => {
     major: '',
     user_id: localStorage.getItem('user_id'),
   });
+
+
+  // const getStudent = id => {
+  // axiosWithAuth()
+  // .get(`/students/user/${id}`)
+  // .then(res => setStudent(res.data)) 
+  // .catch(err => console.log(err.response));
+  // };
+
+  // useEffect(() => {
+  //   getStudent(props.match.params.id)
+  // }, [props.match.params.id])
+
+  
 
   const changeHandler = (event) => {
     setStudent({ ...student, [event.target.name]: event.target.value });
@@ -78,6 +93,8 @@ const StudentForm = (props) => {
     }
     `;
   return (
+    <> 
+    <Messages />
     <StyledForm onSubmit={submitForm}>
       <label >Student Name</label>
       <input
@@ -98,7 +115,10 @@ const StudentForm = (props) => {
         value={student.major}
       />
       <button type="submit">Add Student</button>
+      
+       
     </StyledForm>
+    </>
   );
 };
 

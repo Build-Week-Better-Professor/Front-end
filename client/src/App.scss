@@ -44,7 +44,7 @@
   box-shadow: 0 0 10px 5px lightgray;
   width: 45%;
   margin: 0 auto;
-  height: 500px;
+  height: 430px;
 
   .login-title {
     margin-top: 4rem;
@@ -84,3 +84,69 @@
 text-decoration: none;
 color: rgb(67, 128, 214)
 }
+
+// Message form styling
+
+.msg-form {
+  border: 2px solid lightgray;
+  margin: 0 auto;
+  width: 60%;
+  height: 420px;
+
+  .msg-name {
+    // border: 2px solid green;
+    position: relative;
+    top: -10rem;
+    margin: 2rem 0 0 1rem;
+    padding: .2rem;
+    
+  }
+
+  .name-title {
+    position: relative;
+    left: -.05rem;
+    top: -9.8rem;
+    color: white;
+    text-shadow: 2px 2px 3px #282c34;
+  
+  }
+
+  .date-title {
+    // border: 2px solid purple; 
+    position: relative;
+    left: -12rem;
+    top: -12.3rem;
+    color: white;
+    text-shadow: 2px 2px 3px #282c34;
+     
+  }
+
+  .msg-date {
+    // border: 2px solid purple;  
+    position: relative;
+    top: -16rem;
+    margin: 2rem 0 0 2rem;
+    padding: .2rem;
+  }
+}
+
+.msg-title {
+  position: relative;
+  left: 8.3rem;
+  top: -15rem;
+}
+
+.msg-box {
+  height: 250px;
+  width: 250px;
+  position: relative;
+  top: -8rem;
+  margin: 2rem 0 0 1rem;
+  padding: .2rem;
+}
+
+.msg-btn {
+  position: relative;
+  top: -8rem;
+  margin: 0 0 0 10rem;
+  }

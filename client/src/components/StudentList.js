@@ -3,9 +3,14 @@ import axios from "axios";
 import StudentForm from "./StudentsForm";
 import styled from "styled-components";
 import ProjectForm from "./ProjectForm";
+import Header from './Header';
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+
+
 const StudentList = props => {
     const [students, setStudents] = useState([])
+    const [remove, setRemove] = useState([])
+
     useEffect(() => {
        axiosWithAuth()
         .get(`/students/user/${localStorage.getItem('user_id')}`)
@@ -18,6 +23,18 @@ const StudentList = props => {
         });
 
   },[]);
+
+  const deleteStudent = id => {
+    axiosWithAuth().delete(`/students/${id}`)
+    .then(res => {
+      console.log(res);
+      setRemove(res.data)
+      // props.history.push('/private');
+    })
+    .catch(err => console.log(err.response));
+  }
+  
+  
   const Container = styled.div`
         display: flex;
         flex-direction: column;
@@ -36,6 +53,8 @@ const StudentList = props => {
         
     `;
   return (
+    <> 
+    <Header />
     <Container>
     <RegisterPage>
         <StudentForm />
@@ -47,11 +66,14 @@ const StudentList = props => {
             <div key={index}>
                 <h2>{element.student_name}</h2>
                 <p>{element.major}</p>
+                <button onClick={() => deleteStudent(element.id)}>Delete</button>{''}
             </div>
             );
         })}
     </div>
     </Container>
+    </>
   );
+  
 }
 export default StudentList;
