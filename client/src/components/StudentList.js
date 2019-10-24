@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from "react";
-import axios from "axios";
 import StudentForm from "./StudentsForm";
 import styled from "styled-components";
-import ProjectForm from "./ProjectForm";
+import {Link } from "react-router-dom";
 import Header from './Header';
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
@@ -38,9 +37,9 @@ const StudentList = props => {
   const Container = styled.div`
         display: flex;
         flex-direction: column;
-        background-color: #457B9D;
+        // background-color: #457B9D;
   `;
-  const RegisterPage = styled.div`
+  const FormNav = styled.div`
         display: flex;
         justify-content: space-evenly;
         align-items: end;
@@ -52,25 +51,58 @@ const StudentList = props => {
         }
         
     `;
+    const StudentCard = styled.div`
+        width: 10%;
+        margin: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        border: 2px solid #F8F9F7;
+        div {
+            height: 100px;
+            padding: 5px;
+
+            h2, p {
+                color: #F8F9F7;
+            }
+        }
+    `;
+    const DataContainer = styled.div`
+        display: flex;
+        flex-wrap: wrap;
+        // flex-direction: column;
+        justify-content: start;
+        align-items: center;
+        background-color: #457B9D;
+    `;
   return (
     <> 
     <Header />
     <Container>
-    <RegisterPage>
-        <StudentForm />
-        <ProjectForm />
-    </RegisterPage>
-    <div>
+        
+        <DataContainer>
     {students.map((element, index) => {
             return (
-            <div key={index}>
-                <h2>{element.student_name}</h2>
-                <p>{element.major}</p>
+            <Link to= {`/student/${element.id}`}>
+            <StudentCard key={index}>
+                <div>
+                    <h3>{element.student_name}</h3>
+                </div>
+                <div>
+                    <h3>{element.major}</h3>
+                </div>
+                <div>
                 <button onClick={() => deleteStudent(element.id)}>Delete</button>{''}
-            </div>
+                </div>
+            </StudentCard>
+            </Link>
             );
         })}
-    </div>
+        </DataContainer>
+    <FormNav>
+        <StudentForm />
+    </FormNav>
     </Container>
     </>
   );
