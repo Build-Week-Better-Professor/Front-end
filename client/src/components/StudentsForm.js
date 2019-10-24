@@ -20,7 +20,7 @@ const StudentForm = (props) => {
     axiosWithAuth()
       .post(`/students`, student)
       .then((res) => {
-        console.log(res.data);
+        console.log("this is from post", res.data);
         setStudent({
           student_name: '',
           major: '',
@@ -31,8 +31,8 @@ const StudentForm = (props) => {
   };
 
   const StyledForm = styled.form`
-    width: 20%;
-    height: 70vh;
+    width: 30%;
+    height: 40vh;
     margin: auto 100px;
     padding: 32px;
     font-weight: bold;
@@ -54,7 +54,7 @@ const StudentForm = (props) => {
     }
     label {
         display: flex;
-        text-align: start;
+        align-items: start;
         justify-content: end;
         
     }
@@ -79,19 +79,19 @@ const StudentForm = (props) => {
     `;
   return (
     <StyledForm onSubmit={submitForm}>
-      <label htmlFor="student_name">Student Name</label>
+      <label >Student Name</label>
       <input
+        key= "student_name"
         name="student_name"
-        id="student_name"
         type="text"
         placeholder="student name..."
         onChange={changeHandler}
         value={student.student_name}
       />
-      <label htmlFor="major">Major</label>
+      <label >Major</label>
       <input
         name="major"
-        id="major"
+        key= "major"
         type="text"
         placeholder="major..."
         onChange={changeHandler}

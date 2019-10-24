@@ -3,9 +3,11 @@ import styled from "styled-components";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const ProjectForm = (props) => {
+    console.log(props.studentID);
     const [project, setProject] = useState({
       project_name: '',
       deadline: '',
+    //   student_id: `${props.studentID.id}`
     //   student_id: localStorage.getItem('student_id'),
     });
   
@@ -24,15 +26,15 @@ const ProjectForm = (props) => {
           setProject({
             project_name: '',
             deadline: '',
-            // student_id: localStorage.getItem('project_id'),
+            // student_id: `${props.studentID.id}`
           });
         })
         .catch((err) => console.log(err.response));
     };
   
     const StyledForm = styled.form`
-      width: 20%;
-      height: 70vh;
+      width: 30%;
+      height: 40vh;
       margin: auto 100px;
       padding: 32px;
       font-weight: bold;
