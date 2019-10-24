@@ -1,11 +1,12 @@
-export default Student;
 import React, {useState, useEffect} from "react";
 import ProjectForm from "./ProjectForm";
 import styled from "styled-components";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+import Messages from "./Messages";
 
 const Student = props => {
     const [projects, setProjects] = useState([]);
+    const [message, setMessage] = useState([])
 
     const ProjectCard = styled.div`
         width: 10%;
