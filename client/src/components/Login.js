@@ -26,6 +26,7 @@ const login = event => {
     .then(res => { 
         console.log('DATA',res.data);
         localStorage.setItem('token', res.data.token);
+        localStorage.setItem('user_id', res.data.id);
         props.history.push('/private')
     })
      

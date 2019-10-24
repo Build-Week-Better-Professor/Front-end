@@ -46,7 +46,7 @@ const handleChange = event => {
     onChange={handleChange} 
     />
     
-    <label className="msg-title">Message</label> 
+    {/* <label className="msg-title">Message</label>  */}
     
     <textarea className="msg-box"
     type="text"

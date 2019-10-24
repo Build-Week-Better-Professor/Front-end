@@ -2,31 +2,28 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Login from './components/Login';
 import PrivateRoute from './components/PrivateRoute';
-import DisplayForm from './Registration/DisplayForm';
-import Messages from './components/Messages';
-import StudentList from './Registration/StudentList';
+import StudentList from "./components/StudentList";
+import Register from "./components/Register";
 
 
 import './App.scss';
-
+import DisplayForm from "./components/Register";
+import StudentForm from './components/StudentsForm';
 function App() {
   return (
     <Router>
     <div className="App">
- 
-    
-      {/* <Messages /> */}
     
     <div className="main">
       <Switch>
       
-      <PrivateRoute exact path="/private" component={StudentList}/>
+      <PrivateRoute path="/private" component={StudentList}/>
       <Route exact path="/login" component={Login}/>
-      <Route exact path="/register" component={DisplayForm}/>
+      <Route exact path="/register" component={Register}/>
+      {/* <Route exact path="/update-student/:id" component={StudentsForm}/> */}
       
       </Switch>
     </div>
- 
     </div>
     </Router>
   );
