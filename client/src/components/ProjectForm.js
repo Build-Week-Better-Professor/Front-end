@@ -3,12 +3,11 @@ import styled from "styled-components";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const ProjectForm = (props) => {
-    const studentID = props.students.map((element, index) => element.id);
     console.log(props.studentID);
     const [project, setProject] = useState({
       project_name: '',
       deadline: '',
-      student_id: ''
+      student_id: `${props.id}`
     });
   
     const changeHandler = (event) => {
@@ -26,7 +25,7 @@ const ProjectForm = (props) => {
           setProject({
             project_name: '',
             deadline: '',
-            student_id: ''
+            student_id: `${props.id}`
           });
         })
         .catch((err) => console.log(err.response));
@@ -99,9 +98,6 @@ const ProjectForm = (props) => {
           onChange={changeHandler}
           value={project.deadline}
         />
-        <select name="student_id" value={project.student_id} onChange={changeHandler}>
-        {studentID.map((id) => <option key={id.value} value={id.value}>{id}</option>)}
-      </select>
         <button type="submit">Add Project</button>
       </StyledForm>
     );
