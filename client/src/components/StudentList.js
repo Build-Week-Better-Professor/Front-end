@@ -1,10 +1,15 @@
 import React, {useState, useEffect} from "react";
 import StudentForm from "./StudentsForm";
 import styled from "styled-components";
-import { axiosWithAuth } from "../utils/axiosWithAuth";
 import {Link } from "react-router-dom";
+import Header from './Header';
+import { axiosWithAuth } from "../utils/axiosWithAuth";
+
+
 const StudentList = props => {
     const [students, setStudents] = useState([])
+    const [remove, setRemove] = useState([])
+
     useEffect(() => {
        axiosWithAuth()
         .get(`/students/user/${localStorage.getItem('user_id')}`)
@@ -18,6 +23,17 @@ const StudentList = props => {
 
   },[]);
 
+  const deleteStudent = id => {
+    axiosWithAuth().delete(`/students/${id}`)
+    .then(res => {
+      console.log(res);
+      setRemove(res.data)
+      // props.history.push('/private');
+    })
+    .catch(err => console.log(err.response));
+  }
+  
+  
   const Container = styled.div`
         display: flex;
         flex-direction: column;
@@ -61,6 +77,8 @@ const StudentList = props => {
         background-color: #457B9D;
     `;
   return (
+    <> 
+    <Header />
     <Container>
         
         <DataContainer>
@@ -74,6 +92,9 @@ const StudentList = props => {
                 <div>
                     <h3>{element.major}</h3>
                 </div>
+                <div>
+                <button onClick={() => deleteStudent(element.id)}>Delete</button>{''}
+                </div>
             </StudentCard>
             </Link>
             );
@@ -83,6 +104,8 @@ const StudentList = props => {
         <StudentForm />
     </FormNav>
     </Container>
+    </>
   );
+  
 }
 export default StudentList;

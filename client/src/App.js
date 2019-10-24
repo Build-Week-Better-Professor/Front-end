@@ -9,7 +9,6 @@ import Student from "./components/Student";
 
 
 import './App.scss';
-import DisplayForm from "./components/Register";
 function App() {
   return (
     <Router>
@@ -24,7 +23,6 @@ function App() {
       <PrivateRoute path="/private" component={StudentList}/>
       <Route exact path="/login" component={Login}/>
       <Route exact path="/register" component={Register}/>
-      <Route exact path="/student/:id" component={Student}/>
       
       </Switch>
     </div>
