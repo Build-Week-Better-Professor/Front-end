@@ -5,7 +5,7 @@ import { fetchList, postList } from '../actions';
 
 const Messages = props => {
 console.log('NEW', props);
-const [input, setInput] = useState({message: '', date: '', student_id: ''})
+const [input, setInput] = useState({message: '', date: '', student_id: props.studentId})
 
 const handleChange = event => {
     setInput({
@@ -17,14 +17,22 @@ const handleChange = event => {
   const handleSubmit = event => {
    event.preventDefault();
    props.postList(input)
-   
+  
 }
-
+ const message = Object.keys(input)
 
     return (
     <div>
-    <p>{props.message}</p>
-    <p>{props.date}</p>
+    
+    {message.map((item, index) => {
+      return (
+      <div> 
+      <p>{item.message}</p>
+      <p>{item.date}</p>
+      <p>{item.id}</p>
+      </div>
+      )
+    })}
     
     <form className="msg-form" onSubmit={handleSubmit}>
     <h2>Message Form</h2>

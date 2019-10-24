@@ -1,52 +1,113 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
-
-
+export default Student;
+import React, {useState, useEffect} from "react";
+import ProjectForm from "./ProjectForm";
+import styled from "styled-components";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const Student = props => {
-const [pupil, setPupil] = useState([])
-const [message, setMessage] = useState([])
- 
-//get request to get student
-const getStudent = () => {
- axiosWithAuth()
- .get(`students/user/${pupil.id}`)
- .then(res => {
- console.log('PUPIL', res)
- setPupil(res.data);
- })
- .catch(err => console.log(err.response))
-}
+    const [projects, setProjects] = useState([]);
 
-useEffect(() => {
+    const ProjectCard = styled.div`
+        width: 10%;
+        margin: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        border: 2px solid #F8F9F7;
+        div {
+            height: 100px;
+            padding: 5px;
 
- getStudent()
+            h2, p {
+                color: #F8F9F7;
+            }
+        }
+    `;
+    const DataContainer = styled.div`
+        display: flex;
+        flex-wrap: wrap;
+        // flex-direction: column;
+        justify-content: start;
+        align-items: center;
+        background-color: #457B9D;
+    `;
+    const FormNav = styled.div`
+    display: flex;
+    justify-content: space-evenly;
+    align-items: end;
+    border: 2px solid gray;
+    padding-bottom: 3%;
 
-},[])
+    h2 {
+        color:#F8F9F7;
+    }
+    
+`;
+    const Container = styled.div`
+            display: flex;
+            flex-direction: column;
+            // background-color: #457B9D;
+    `;
+    const getMessage = () => {
+        axiosWithAuth()
+        .get(`messages/students/${props.match.params.id}`)
+        .then(res => {
+        console.log('MESSAGE', res)
+        setMessage(res.data);
+        })
+        .catch(err => console.log(err.response))
+       }
+       
+       useEffect(() => {
+       
+        getMessage()
+       
+       },[props.match.params.id])
 
-
-//get request to get messages
-const getMessage = () => {
+    useEffect(() => {
     axiosWithAuth()
-    .get(`messages/students/${message.id}`)
-    .then(res => {
-    console.log('MESSAGE', res)
-    setMessage(res.data);
-    })
-    .catch(err => console.log(err.response))
-   }
-   
-   useEffect(() => {
-   
-    getMessage()
-   
-   },[])
-    
-    
+         .get(`/projects/students/${props.match.params.id}`)
+         .then(response => {
+            setProjects(response.data);
+             console.log("this is projects ", response.data);
+         })
+         .catch(error => {
+             console.error(error);
+         });
+        }, [props.match.params.id])
     return(
-    <div></div>
-    )
+        <Container>
+        <DataContainer>
+        {projects.map((element, index) => {
+            return (
+            // <Link to= {`/student/${element.id}`}>
+            <ProjectCard key={index}>
+                <div>
+                    <h3>{element.project_name}</h3>
+                </div>
+                <div>
+                    <span>{element.deadline}</span>
+                </div>
+            </ProjectCard>
+            // </Link>
+            );
+        })}
+        {message.map((item, index) => {
+      return (
+      <div> 
+      <p>{item.message}</p>
+      <p>{item.date}</p>
+      <p>{item.id}</p>
+      </div>
+      )
+    })}
+    </DataContainer>
+        <FormNav>
+            <ProjectForm studentId={props.match.params.id}/>
+            <Messages studentId/>
+        </FormNav>
+        </Container>
+    );
 }
 export default Student;
-
