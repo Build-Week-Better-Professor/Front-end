@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+import Messages from './Messages';
 
 const StudentForm = (props) => {
   const [student, setStudent] = useState({
@@ -12,7 +13,7 @@ const StudentForm = (props) => {
 
   // const getStudent = id => {
   // axiosWithAuth()
-  // .get(`/students/user/1${id}`)
+  // .get(`/students/user/${id}`)
   // .then(res => setStudent(res.data)) 
   // .catch(err => console.log(err.response));
   // };
@@ -21,15 +22,7 @@ const StudentForm = (props) => {
   //   getStudent(props.match.params.id)
   // }, [props.match.params.id])
 
-  // const deleteStudent = event => {
-  //   event.preventDefault();
-  //   axiosWithAuth().delete(`/students/1/${props.match.params.id}`)
-  //   .then(res => {
-  //     console.log(res);
-  //     props.history.push('/private');
-  //   })
-  //   .catch(err => console.log(err.response));
-  // }
+  
 
   const changeHandler = (event) => {
     setStudent({ ...student, [event.target.name]: event.target.value });
@@ -42,7 +35,7 @@ const StudentForm = (props) => {
     axiosWithAuth()
       .post(`/students`, student)
       .then((res) => {
-        console.log(res.data);
+        console.log("this is from post", res.data);
         setStudent({
           student_name: '',
           major: '',
@@ -53,8 +46,8 @@ const StudentForm = (props) => {
   };
 
   const StyledForm = styled.form`
-    width: 20%;
-    height: 70vh;
+    width: 30%;
+    height: 40vh;
     margin: auto 100px;
     padding: 32px;
     font-weight: bold;
@@ -76,7 +69,7 @@ const StudentForm = (props) => {
     }
     label {
         display: flex;
-        text-align: start;
+        align-items: start;
         justify-content: end;
         
     }
@@ -100,27 +93,32 @@ const StudentForm = (props) => {
     }
     `;
   return (
+    <> 
+    <Messages />
     <StyledForm onSubmit={submitForm}>
-      <label>Student Name</label>
+      <label >Student Name</label>
       <input
+        key= "student_name"
         name="student_name"
         type="text"
         placeholder="student name..."
         onChange={changeHandler}
         value={student.student_name}
       />
-      <label>Major</label>
+      <label >Major</label>
       <input
         name="major"
+        key= "major"
         type="text"
         placeholder="major..."
         onChange={changeHandler}
         value={student.major}
       />
       <button type="submit">Add Student</button>
-      {/* <Link to={`/update-student/${props.match.params.id}`}>Student</Link>
-      <button onClick={deleteStudent}>Delete</button> */}
+      
+       
     </StyledForm>
+    </>
   );
 };
 

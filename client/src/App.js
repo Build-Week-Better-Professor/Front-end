@@ -4,6 +4,7 @@ import Login from './components/Login';
 import PrivateRoute from './components/PrivateRoute';
 import StudentList from "./components/StudentList";
 import Register from "./components/Register";
+import Student from './components/Student';
 
 
 import './App.scss';
@@ -20,7 +21,7 @@ function App() {
       <PrivateRoute path="/private" component={StudentList}/>
       <Route exact path="/login" component={Login}/>
       <Route exact path="/register" component={Register}/>
-      {/* <Route exact path="/update-student/:id" component={StudentsForm}/> */}
+      <Route exact path="/student/:id" component={Student}/>
       
       </Switch>
     </div>
