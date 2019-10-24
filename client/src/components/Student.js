@@ -1,35 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+import Messages from './Messages';
+
 
 
 
 const Student = props => {
-const [pupil, setPupil] = useState([])
 const [message, setMessage] = useState([])
  
-//get request to get student
-const getStudent = () => {
- axiosWithAuth()
- .get(`students/user/${pupil.id}`)
- .then(res => {
- console.log('PUPIL', res)
- setPupil(res.data);
- })
- .catch(err => console.log(err.response))
-}
-
-useEffect(() => {
-
- getStudent()
-
-},[])
 
 
 //get request to get messages
 const getMessage = () => {
     axiosWithAuth()
-    .get(`messages/students/${message.id}`)
+    .get(`messages/students/${props.match.params.id}`)
     .then(res => {
     console.log('MESSAGE', res)
     setMessage(res.data);
@@ -43,9 +28,21 @@ const getMessage = () => {
    
    },[])
     
-    
+   console.log('message', message); 
     return(
-    <div></div>
+    <div>
+        {/* <h1>{props.match.params.id}</h1> */}
+        <Messages studentId={props.match.params.id}/>
+        {message.map((item, index) => {
+      return (
+      <div> 
+      <p>{item.message}</p>
+      <p>{item.date}</p>
+      <p>{item.id}</p>
+      </div>
+      )
+    })}
+    </div>
     )
 }
 export default Student;

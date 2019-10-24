@@ -5,7 +5,29 @@ import styled from "styled-components";
 import ProjectForm from "./ProjectForm";
 import Header from './Header';
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+import { Link } from 'react-router-dom';
 
+
+
+
+
+const Container = styled.div`
+        display: flex;
+        flex-direction: column;
+        background-color: #457B9D;
+  `;
+  const RegisterPage = styled.div`
+        display: flex;
+        justify-content: space-evenly;
+        align-items: end;
+        border: 2px solid gray;
+        padding-bottom: 3%;
+
+        h2 {
+            color:#F8F9F7;
+        }
+        
+    `;
 
 const StudentList = props => {
     const [students, setStudents] = useState([])
@@ -35,23 +57,7 @@ const StudentList = props => {
   }
   
   
-  const Container = styled.div`
-        display: flex;
-        flex-direction: column;
-        background-color: #457B9D;
-  `;
-  const RegisterPage = styled.div`
-        display: flex;
-        justify-content: space-evenly;
-        align-items: end;
-        border: 2px solid gray;
-        padding-bottom: 3%;
 
-        h2 {
-            color:#F8F9F7;
-        }
-        
-    `;
   return (
     <> 
     <Header />
@@ -62,12 +68,13 @@ const StudentList = props => {
     </RegisterPage>
     <div>
     {students.map((element, index) => {
+      console.log('ELEMENT',element);
             return (
-            <div key={index}>
+            <Link to={`student/${element.id}`} key={index}>
                 <h2>{element.student_name}</h2>
                 <p>{element.major}</p>
                 <button onClick={() => deleteStudent(element.id)}>Delete</button>{''}
-            </div>
+            </Link>
             );
         })}
     </div>
