@@ -1,6 +1,7 @@
 .App {
   text-align: center;
   font-family: 'Varela Round', sans-serif;
+  background-color: #F8F9F7;
 }
 
 .App-logo {
@@ -24,14 +25,21 @@
 
 .nav-links {
   text-decoration: none;
-  color: #996699;
+  color: #223F68;
+  div {
+    background-color:#F8F9F7;
+    padding: 10px;
+  }
    }
 
 .nav-bar {
+  background-color: #457B9D;
   margin: 2rem 0;
   display: flex;
   justify-content: center;
   justify-content: space-evenly;
+  align-items: center;
+  height: 10vh;
   }
 
 .app-title {
