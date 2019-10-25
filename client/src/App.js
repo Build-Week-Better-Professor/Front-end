@@ -4,16 +4,18 @@ import Login from './components/Login';
 import PrivateRoute from './components/PrivateRoute';
 import StudentList from "./components/StudentList";
 import Register from "./components/Register";
-import Student from "./components/Student";
+import Student from './components/Student';
+import Header from "./components/Header";
 
 
 import './App.scss';
+import DisplayForm from "./components/Register";
+import StudentForm from './components/StudentsForm';
 function App() {
   return (
     <Router>
     <div className="App">
-    
-     
+      
     <div className="main">
       <Switch>
       

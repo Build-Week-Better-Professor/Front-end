@@ -1,11 +1,10 @@
 import React, { useState, useEffect  } from 'react';
 import { connect } from 'react-redux';
 import { fetchList, postList } from '../actions';
-;
 
 const Messages = props => {
 console.log('NEW', props);
-const [input, setInput] = useState({message: '', date: '', student_id: props.studentId})
+const [input, setInput] = useState({message: '', date: '', student_id: `${props.studentId}`})
 
 const handleChange = event => {
     setInput({

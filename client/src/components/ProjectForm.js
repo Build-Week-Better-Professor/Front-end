@@ -3,11 +3,10 @@ import styled from "styled-components";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const ProjectForm = (props) => {
-    console.log(props.studentID);
     const [project, setProject] = useState({
       project_name: '',
       deadline: '',
-      student_id: `${props.id}`
+      student_id: `${props.studentId}`
     });
   
     const changeHandler = (event) => {
@@ -25,7 +24,7 @@ const ProjectForm = (props) => {
           setProject({
             project_name: '',
             deadline: '',
-            student_id: `${props.id}`
+            student_id: `${props.studentId}`
           });
         })
         .catch((err) => console.log(err.response));

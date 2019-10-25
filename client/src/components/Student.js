@@ -3,6 +3,7 @@ import ProjectForm from "./ProjectForm";
 import styled from "styled-components";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import Messages from "./Messages";
+import Header from "./Header";
 
 const Student = props => {
     const [projects, setProjects] = useState([]);
@@ -78,6 +79,8 @@ const Student = props => {
          });
         }, [props.match.params.id])
     return(
+        <>
+        <Header/>
         <Container>
         <DataContainer>
         {projects.map((element, index) => {
@@ -96,19 +99,20 @@ const Student = props => {
         })}
         {message.map((item, index) => {
       return (
-      <div> 
+      <ProjectCard key={index}> 
       <p>{item.message}</p>
       <p>{item.date}</p>
       <p>{item.id}</p>
-      </div>
+      </ProjectCard>
       )
     })}
     </DataContainer>
         <FormNav>
             <ProjectForm studentId={props.match.params.id}/>
-            <Messages studentId/>
+            <Messages studentId={props.match.params.id}/>
         </FormNav>
         </Container>
+    </>
     );
 }
 export default Student;
