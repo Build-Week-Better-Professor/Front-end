@@ -1,38 +1,99 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
-import Messages from './Messages';
-
-
-
+import React, {useState, useEffect} from "react";
+import ProjectForm from "./ProjectForm";
+import styled from "styled-components";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
+import Messages from "./Messages";
 
 const Student = props => {
-const [message, setMessage] = useState([])
- 
+    const [projects, setProjects] = useState([]);
+    const [message, setMessage] = useState([])
 
+    const ProjectCard = styled.div`
+        width: 10%;
+        margin: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        border: 2px solid #F8F9F7;
+        div {
+            height: 100px;
+            padding: 5px;
 
-//get request to get messages
-const getMessage = () => {
-    axiosWithAuth()
-    .get(`messages/students/${props.match.params.id}`)
-    .then(res => {
-    console.log('MESSAGE', res)
-    setMessage(res.data);
-    })
-    .catch(err => console.log(err.response))
-   }
-   
-   useEffect(() => {
-   
-    getMessage()
-   
-   },[])
+            h2, p {
+                color: #F8F9F7;
+            }
+        }
+    `;
+    const DataContainer = styled.div`
+        display: flex;
+        flex-wrap: wrap;
+        // flex-direction: column;
+        justify-content: start;
+        align-items: center;
+        background-color: #457B9D;
+    `;
+    const FormNav = styled.div`
+    display: flex;
+    justify-content: space-evenly;
+    align-items: end;
+    border: 2px solid gray;
+    padding-bottom: 3%;
+
+    h2 {
+        color:#F8F9F7;
+    }
     
-   console.log('message', message); 
+`;
+    const Container = styled.div`
+            display: flex;
+            flex-direction: column;
+            // background-color: #457B9D;
+    `;
+    const getMessage = () => {
+        axiosWithAuth()
+        .get(`messages/students/${props.match.params.id}`)
+        .then(res => {
+        console.log('MESSAGE', res)
+        setMessage(res.data);
+        })
+        .catch(err => console.log(err.response))
+       }
+       
+       useEffect(() => {
+       
+        getMessage()
+       
+       },[props.match.params.id])
+
+    useEffect(() => {
+    axiosWithAuth()
+         .get(`/projects/students/${props.match.params.id}`)
+         .then(response => {
+            setProjects(response.data);
+             console.log("this is projects ", response.data);
+         })
+         .catch(error => {
+             console.error(error);
+         });
+        }, [props.match.params.id])
     return(
-    <div>
-        {/* <h1>{props.match.params.id}</h1> */}
-        <Messages studentId={props.match.params.id}/>
+        <Container>
+        <DataContainer>
+        {projects.map((element, index) => {
+            return (
+            // <Link to= {`/student/${element.id}`}>
+            <ProjectCard key={index}>
+                <div>
+                    <h3>{element.project_name}</h3>
+                </div>
+                <div>
+                    <span>{element.deadline}</span>
+                </div>
+            </ProjectCard>
+            // </Link>
+            );
+        })}
         {message.map((item, index) => {
       return (
       <div> 
@@ -42,8 +103,12 @@ const getMessage = () => {
       </div>
       )
     })}
-    </div>
-    )
+    </DataContainer>
+        <FormNav>
+            <ProjectForm studentId={props.match.params.id}/>
+            <Messages studentId/>
+        </FormNav>
+        </Container>
+    );
 }
 export default Student;
-

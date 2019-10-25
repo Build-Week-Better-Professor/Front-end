@@ -71,7 +71,6 @@ const RegisterForm = () => {
       display: flex;
       align-self: center;
 }
-    }
     `;
     return (
       <StyledForm onSubmit={submitForm}>
