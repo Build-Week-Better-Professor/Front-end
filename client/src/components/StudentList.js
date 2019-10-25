@@ -6,6 +6,28 @@ import Header from './Header';
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 
+
+
+
+
+const Container = styled.div`
+        display: flex;
+        flex-direction: column;
+        background-color: #457B9D;
+  `;
+  const RegisterPage = styled.div`
+        display: flex;
+        justify-content: space-evenly;
+        align-items: end;
+        border: 2px solid gray;
+        padding-bottom: 3%;
+
+        h2 {
+            color:#F8F9F7;
+        }
+        
+    `;
+
 const StudentList = props => {
     const [students, setStudents] = useState([])
     const [remove, setRemove] = useState([])
@@ -28,7 +50,7 @@ const StudentList = props => {
     .then(res => {
       console.log(res);
       setRemove(res.data)
-      // props.history.push('/private');
+      
     })
     .catch(err => console.log(err.response));
   }
@@ -83,6 +105,7 @@ const StudentList = props => {
         
         <DataContainer>
     {students.map((element, index) => {
+      console.log('ELEMENT',element);
             return (
             <Link to= {`/student/${element.id}`}>
             <StudentCard key={index}>
