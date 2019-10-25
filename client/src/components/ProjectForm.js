@@ -38,7 +38,6 @@ const ProjectForm = (props) => {
       font-weight: bold;
       background-color: #F8F9F7;
       color: #223F68;
-    //   box-shadow: 2px 2px 10px 10px #223F68;
       display: flex;
       flex-direction: column;
       justify-content: space-evenly;

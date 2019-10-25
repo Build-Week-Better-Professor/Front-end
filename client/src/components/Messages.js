@@ -1,6 +1,7 @@
 import React, { useState, useEffect  } from 'react';
 import { connect } from 'react-redux';
 import { fetchList, postList } from '../actions';
+import styled from "styled-components";
 
 const Messages = props => {
 console.log('NEW', props);
@@ -19,11 +20,55 @@ const handleChange = event => {
   
 }
  const message = Object.keys(input)
+ const StyledForm = styled.form`
+ width: 50%;
+ height: 40.5vh;
+ margin: auto 100px;
+ padding: 32px;
+ font-weight: bold;
+ background-color: #F8F9F7;
+ color: #223F68;
+ display: flex;
+ flex-direction: column;
+ justify-content: space-evenly;
 
+ input {
+     margin-bottom: 28px;
+     padding: 0.5rem;
+     font-size: 16px;
+     width: 96%;
+     display: block;
+     color: #223F68;
+     border: 2px solid #223F68;
+ }
+ label {
+     display: flex;
+     text-align: start;
+     justify-content: end;
+     
+ }
+ button {
+   max-width: 100%;
+   width: 250px;
+   margin: 20px 0;
+   padding: 12px 20px;
+   border-style: none;
+   background-color: #457B9D;
+   box-shadow: 0px 2px 2px lightgray;
+   font-size: 25px;
+   font-weight: 500;
+   color: #F8F9F7;
+   cursor: pointer;
+   outline: none;
+   -webkit-appearance: none;
+   display: flex;
+   align-self: center;
+}
+ `;
     return (
-    <div>
+    <>
     
-    {message.map((item, index) => {
+    {/* {message.map((item, index) => {
       return (
       <div> 
       <p>{item.message}</p>
@@ -31,12 +76,11 @@ const handleChange = event => {
       <p>{item.id}</p>
       </div>
       )
-    })}
+    })} */}
     
-    <form className="msg-form" onSubmit={handleSubmit}>
-    <h2>Message Form</h2>
-    <label className="name-title">Student</label>
-    <input className="msg-name"
+    <StyledForm onSubmit={handleSubmit}>
+    <label >Student</label>
+    <input
     type="text" 
     name="student_id"
     value={input.student_id}
@@ -44,8 +88,8 @@ const handleChange = event => {
     onChange={handleChange}
     />
     
-    <label className="date-title">Date</label> 
-    <input className="msg-date"
+    <label >Date</label> 
+    <input
     type="date" 
     name="date"
     value={input.date}
@@ -53,9 +97,7 @@ const handleChange = event => {
     onChange={handleChange} 
     />
     
-    {/* <label className="msg-title">Message</label>  */}
-    
-    <textarea className="msg-box"
+    <textarea
     type="text"
     value={input.text}
     name="message"
@@ -63,9 +105,9 @@ const handleChange = event => {
     onChange={handleChange}
     />
     
-    <button className="msg-btn" type="submit">Submit</button> 
-    </form>
-    </div>
+    <button type="submit">Submit</button> 
+    </StyledForm>
+    </>
     )
 }
 

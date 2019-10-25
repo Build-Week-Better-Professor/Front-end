@@ -5,7 +5,6 @@ import PrivateRoute from './components/PrivateRoute';
 import StudentList from "./components/StudentList";
 import Register from "./components/Register";
 import Student from './components/Student';
-import Header from "./components/Header";
 
 
 import './App.scss';
@@ -15,10 +14,10 @@ function App() {
   return (
     <Router>
     <div className="App">
-      
+
     <div className="main">
+      <Route exact path="/" component={Login}/>
       <Switch>
-      
       <PrivateRoute path="/private" component={StudentList}/>
       <Route exact path="/login" component={Login}/>
       <Route exact path="/register" component={Register}/>
