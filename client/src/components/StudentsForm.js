@@ -4,7 +4,6 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const StyledForm = styled.form`
     width: 30%;
-    height: 40vh;
     margin: auto 100px;
     padding: 32px;
     font-weight: bold;
@@ -36,7 +35,7 @@ const StyledForm = styled.form`
       margin: 20px 0;
       padding: 12px 20px;
       border-style: none;
-      background-color: #223F68;
+      background-color: #457B9D;
       box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
       font-size: 25px;
       font-weight: 500;

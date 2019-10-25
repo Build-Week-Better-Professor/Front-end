@@ -8,14 +8,14 @@ import Header from "./Header";
 
 const ProjectCard = styled.div`
         width: 200px;
-        height: 110px;
+        height: 200px;
         background-color: #F8F9F7;
         margin: 10px;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         flex-wrap: wrap;
-        box-shadow: 2px 2px 10px 10px #223F68;
+        box-shadow: 0 0 10px 5px lightgray;
         div {
             height: 100px;
             width: 100px;
@@ -30,7 +30,7 @@ const ProjectCard = styled.div`
     const MessegesCard = styled.div`
         width: 200px;
         height: 110px;
-        resize: auto;
+        padding: 10px 10px 30px 10px;
         box-shadow: 2px 2px 10px 10px #F8F9F7;
         background-color: #F8F9F7;
         margin: 10px;
@@ -50,31 +50,36 @@ const ProjectCard = styled.div`
         }
     `;
     const MessegeDataContainer = styled.div`
-        width: 40%;
-        padding: 10px;
+        width: 49%;
+        padding: 10px 10px 30px 10px;
         display: flex;
         flex-wrap: wrap;
         // flex-direction: column;
         justify-content: space-evenly;
         align-items: center;
-        background-color: #457B9D;
+        background-color: #223F68;
+        h2 {
+            color: #F8F9F7;
+        }
     `;
     const ProjectDataContainer = styled.div`
-        padding: 10px;
-        width: 40%;
+        padding: 10px 10px 30px 10px;
+        width: 49%;
         display: flex;
         flex-wrap: wrap;
         // flex-direction: column;
         justify-content: space-evenly;
         align-items: center;
-        background-color: #457B9D;
+        background-color: #223F68;
+        h2 {
+            color: #F8F9F7;
+        }
     `;
     const FormNav = styled.div`
-    margin-top: 20px;
+    margin-top: 100px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: end;
-    border: 2px solid gray;
     padding-bottom: 3%;
 
     h2 {
@@ -83,15 +88,16 @@ const ProjectCard = styled.div`
     
 `;
     const Container = styled.div`
-            display: flex;
-            flex-direction: column;
-            // background-color: #457B9D;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        // background-color: #457B9D;
     `;
     const Feeds = styled.div`
     display:flex;
     justify-content: space-between;
     `;
-    
+
 const Student = props => {
     const [projects, setProjects] = useState([]);
     const [message, setMessage] = useState([])
@@ -127,16 +133,18 @@ const Student = props => {
     return(
         <>
         <Header/>
+        <h1>Schedule a project with them or send them a message.</h1>
         <Container>
         <Feeds>
         <ProjectDataContainer>
+            <h2>Projects Connected to Student</h2>
         {projects.map((element, index) => {
             return (
             // <Link to= {`/student/${element.id}`}>
             <ProjectCard key={index}>
                 <div>
-                    <h3>{element.project_name}</h3>
-                    <span>{element.deadline}</span>
+                    <h3>Project: {element.project_name}</h3>
+                    <span>Deadline: {element.deadline}</span>
                 </div>
             </ProjectCard>
             // </Link>
@@ -144,6 +152,7 @@ const Student = props => {
         })}
         </ProjectDataContainer>
         <MessegeDataContainer>
+            <h2>Messeges Sent to Student</h2>
         {message.map((item, index) => {
       return (
       <MessegesCard key={index}> 
