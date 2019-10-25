@@ -5,11 +5,8 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 import Messages from "./Messages";
 import Header from "./Header";
 
-const Student = props => {
-    const [projects, setProjects] = useState([]);
-    const [message, setMessage] = useState([])
 
-    const ProjectCard = styled.div`
+const ProjectCard = styled.div`
         width: 200px;
         height: 110px;
         background-color: #F8F9F7;
@@ -94,6 +91,12 @@ const Student = props => {
     display:flex;
     justify-content: space-between;
     `;
+    
+const Student = props => {
+    const [projects, setProjects] = useState([]);
+    const [message, setMessage] = useState([])
+
+    
     const getMessage = () => {
         axiosWithAuth()
         .get(`messages/students/${props.match.params.id}`)

@@ -3,24 +3,7 @@ import { connect } from 'react-redux';
 import { fetchList, postList } from '../actions';
 import styled from "styled-components";
 
-const Messages = props => {
-console.log('NEW', props);
-const [input, setInput] = useState({message: '', date: '', student_id: `${props.studentId}`})
-
-const handleChange = event => {
-    setInput({
-   ...input,
-   [event.target.name]: event.target.value
-    })
-  }
-
-  const handleSubmit = event => {
-   event.preventDefault();
-   props.postList(input)
-  
-}
- const message = Object.keys(input)
- const StyledForm = styled.form`
+const StyledForm = styled.form`
  width: 50%;
  height: 40.5vh;
  margin: auto 100px;
@@ -65,6 +48,24 @@ const handleChange = event => {
    align-self: center;
 }
  `;
+const Messages = props => {
+console.log('NEW', props);
+const [input, setInput] = useState({message: '', date: '', student_id: `${props.studentId}`})
+
+const handleChange = event => {
+    setInput({
+   ...input,
+   [event.target.name]: event.target.value
+    })
+  }
+
+  const handleSubmit = event => {
+   event.preventDefault();
+   props.postList(input)
+  
+}
+ const message = Object.keys(input)
+
     return (
     <>
     
