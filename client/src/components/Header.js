@@ -9,7 +9,7 @@ return (
 
 <NavLink className="nav-links" to="/login"><div>Login</div></NavLink>
 <NavLink className="nav-links" to="/register"><div>Register</div></NavLink>
-<NavLink className="nav-links" to="/"><div>My Account</div></NavLink>
+<NavLink className="nav-links" to="/"><div>My Students</div></NavLink>
 
 </div>
 )
