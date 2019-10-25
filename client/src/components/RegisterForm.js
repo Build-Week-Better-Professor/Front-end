@@ -62,15 +62,15 @@ const RegisterForm = () => {
     };
 
     // sends form data to state via the state function passed down 
-    // from PostUsers as props
     const submitForm = event => {
       event.preventDefault();
+      validate();
       setFormData({ username: "", password: "", first_name: "", last_name: "",});
       axios.post('https://better-professor-backend.herokuapp.com/users/register', formData) 
               .then(res => console.log(res.data) )
               .catch(err => console.log(err.response));
     }
-
+  
     return (
       <StyledForm onSubmit={submitForm}>
           <label htmlFor="username">Username</label>
@@ -80,7 +80,8 @@ const RegisterForm = () => {
               type="text" 
               placeholder="new username..." 
               onChange={changeHandler}
-              value={formData.username}/>
+              value={formData.username}
+              required/>
           <label htmlFor="password">Password</label>
           <input 
               name="password" 
@@ -88,7 +89,8 @@ const RegisterForm = () => {
               type="password" 
               placeholder="new password..." 
               onChange={changeHandler}
-              value={formData.password}/>
+              value={formData.password}
+              required/>
           <label htmlFor="first_name">First Name</label>
         <input 
               name="first_name" 
@@ -96,7 +98,8 @@ const RegisterForm = () => {
               type="text" 
               placeholder="first name..." 
               onChange={changeHandler}
-              value={formData.first_name}/>
+              value={formData.first_name}
+              required/>
         <label htmlFor="last_name">Last Name</label>
         <input 
               name="last_name" 
@@ -104,8 +107,9 @@ const RegisterForm = () => {
               type="text" 
               placeholder="last name..." 
               onChange={changeHandler}
-              value={formData.last_name}/>
-        <button type="submit">Register</button>
+              value={formData.last_name}
+              required/>
+        <button type="submit" >Register</button>
       </StyledForm>
     );
   };
