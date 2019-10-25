@@ -22,7 +22,6 @@ input {
     width: 96%;
     display: block;
     color: #223F68;
-    border: 2px solid #223F68;
 }
 label {
     display: flex;

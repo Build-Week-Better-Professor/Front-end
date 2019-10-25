@@ -7,8 +7,7 @@ import Header from "./Header";
 
 
 const ProjectCard = styled.div`
-        width: 200px;
-        height: 200px;
+        width: 250px;
         background-color: #F8F9F7;
         margin: 10px;
         display: flex;
@@ -28,8 +27,7 @@ const ProjectCard = styled.div`
         }
     `;
     const MessegesCard = styled.div`
-        width: 200px;
-        height: 110px;
+        width: 250px;
         padding: 10px 10px 30px 10px;
         box-shadow: 2px 2px 10px 10px #F8F9F7;
         background-color: #F8F9F7;
@@ -137,28 +135,26 @@ const Student = props => {
         <Container>
         <Feeds>
         <ProjectDataContainer>
-            <h2>Projects Connected to Student</h2>
+            <h2>Projects Connected to Student:</h2>
         {projects.map((element, index) => {
             return (
             // <Link to= {`/student/${element.id}`}>
             <ProjectCard key={index}>
-                <div>
-                    <h3>Project: {element.project_name}</h3>
+                    <h3>Name: {element.project_name}</h3>
                     <span>Deadline: {element.deadline}</span>
-                </div>
             </ProjectCard>
             // </Link>
             );
         })}
         </ProjectDataContainer>
         <MessegeDataContainer>
-            <h2>Messeges Sent to Student</h2>
+            <h2>Messeges Sent to Student: </h2>
         {message.map((item, index) => {
       return (
       <MessegesCard key={index}> 
         <div>
-            <p>Messege Sent: {item.message}</p>
-            <p>On: {item.date}</p>
+            <p>{item.message}</p>
+            <p>{item.date}</p>
             <p>{item.id}</p>
         </div>
       </MessegesCard>
