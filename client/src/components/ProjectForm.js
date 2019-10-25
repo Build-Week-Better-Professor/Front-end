@@ -32,7 +32,7 @@ label {
 button {
   max-width: 100%;
   width: 250px;
-  margin: 20px 0;
+  margin: 50px 0 0 0;
   padding: 12px 20px;
   border-style: none;
   background-color: #457B9D;

@@ -13,22 +13,21 @@ const StyledForm = styled.form`
  color: #223F68;
  display: flex;
  flex-direction: column;
- justify-content: space-evenly;
  margin-top: 10px;
 
  input {
      margin-bottom: 28px;
      padding: 0.5rem;
      font-size: 16px;
-     width: 96%;
-     display: block;
+     width: 50%;
+     display: flex;
      color: #223F68;
      border: 2px solid #223F68;
+     align-self: flex-end;
  }
  label {
      display: flex;
-     text-align: start;
-     justify-content: end;
+     align-self: center;
      
  }
  button {
@@ -46,14 +45,14 @@ const StyledForm = styled.form`
    outline: none;
    -webkit-appearance: none;
    display: flex;
-   align-self: center;
+   align-self: flex-end;
 }
 textarea {
-  margin-bottom: 28px;
      padding: 0.5rem;
      font-size: 16px;
-     width: 96%;
-     display: block;
+     width: 50%;
+     display: flex;
+     align-self: flex-end;
      color: #223F68;
      border: 2px solid #223F68;
 }

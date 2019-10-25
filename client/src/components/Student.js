@@ -14,7 +14,7 @@ const ProjectCard = styled.div`
         flex-direction: column;
         justify-content: flex-start;
         flex-wrap: wrap;
-        box-shadow: 0 0 10px 5px lightgray;
+        // box-shadow: 0 0 10px 5px lightgray;
         div {
             height: 100px;
             width: 100px;
@@ -48,7 +48,7 @@ const ProjectCard = styled.div`
         }
     `;
     const MessegeDataContainer = styled.div`
-        width: 49%;
+        width: 40%;
         padding: 10px 10px 30px 10px;
         display: flex;
         flex-wrap: wrap;
@@ -62,7 +62,7 @@ const ProjectCard = styled.div`
     `;
     const ProjectDataContainer = styled.div`
         padding: 10px 10px 30px 10px;
-        width: 49%;
+        width: 40%;
         display: flex;
         flex-wrap: wrap;
         // flex-direction: column;
