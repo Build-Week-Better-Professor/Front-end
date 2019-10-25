@@ -27,14 +27,14 @@ const login = event => {
         console.log('DATA',res.data);
         localStorage.setItem('token', res.data.token);
         localStorage.setItem('user_id', res.data.id);
-        props.history.push('/private')
+        props.history.push('/')
     })
      
       .catch(err => console.log(err.reponse))
     };
 
     if (localStorage.getItem('token')) {
-        return <Redirect to='/private' />
+        return <Redirect to='/' />
     }
     
     return (
