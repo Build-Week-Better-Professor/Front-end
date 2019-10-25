@@ -5,74 +5,70 @@ import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { Redirect } from 'react-router-dom';
 import Header from './Header';
 
+const Login = (props) => {
+  console.log('LOGIN', props);
+  const [input, setInput] = useState({ username: '', password: '' });
 
-const Login = props => {
-    console.log('LOGIN', props);
- const [input, setInput] = useState({ username: '', password: '' })
- 
- const handleChange = event => {
+  const handleChange = (event) => {
     setInput({
-   ...input,
-   [event.target.name]: event.target.value
-    })
-  }
+      ...input,
+      [event.target.name]: event.target.value,
+    });
+  };
 
-
-const login = event => {
+  const login = (event) => {
     event.preventDefault();
 
     axiosWithAuth()
-    .post(`/users/login`, input)
-    .then(res => { 
-        console.log('DATA',res.data);
+      .post(`/users/login`, input)
+      .then((res) => {
+        console.log('DATA', res.data);
         localStorage.setItem('token', res.data.token);
         localStorage.setItem('user_id', res.data.id);
         localStorage.setItem('first_name', res.data.first_name);
-        props.history.push('/')
-    })
-     
-      .catch(err => console.log(err.reponse))
-    };
+        props.history.push('/');
+      })
 
-    if (localStorage.getItem('token')) {
-        return <Redirect to='/' />
-    }
-    
-    return (
-    <> 
-    <Header />
-    <h1 className="app-title">Better Professor App</h1>
-     <div className="login-form-div"> 
-     
-      <h1 className="login-title">Log In</h1>
+      .catch((err) => console.log(err.reponse));
+  };
+
+  if (localStorage.getItem('token')) {
+    return <Redirect to="/" />;
+  }
+
+  return (
+    <>
+      <Header />
+      <h1 className="app-title">Better Professor App</h1>
+      <div className="login-form-div">
+        <h1 className="login-title">Log In</h1>
 
         <form onSubmit={login}>
-        
-        
+          <input
+            type="text"
+            value={input.username}
+            name="username"
+            placeholder="...enter username"
+            onChange={handleChange}
+          />
 
-        <input 
-        type= 'text'
-        value={input.username}
-        name='username'
-        placeholder='...enter username'
-        onChange={handleChange}
-        />
-      
-        <input 
-        type='password'
-        value={input.password}
-        name='password'
-        placeholder='...enter password'
-        onChange={handleChange}
-        />
-        <button className="login-button">LOG IN</button>
-        
-        <div className="create-acct">
-        <Link className="acct-link" to="/register">Create an Account</Link>
-        </div>
-        </form> 
-        </div>
-        </>  
-       )
-}
+          <input
+            type="password"
+            value={input.password}
+            name="password"
+            placeholder="...enter password"
+            onChange={handleChange}
+          />
+          <button className="login-button">LOG IN</button>
+
+          <div className="create-acct">
+            <Link className="acct-link" to="/register">
+              Create an Account
+            </Link>
+          </div>
+        </form>
+      </div>
+    </>
+  );
+};
 export default Login;
