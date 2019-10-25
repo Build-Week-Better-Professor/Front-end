@@ -2,39 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
-
-const StudentForm = (props) => {
-  const [student, setStudent] = useState({
-    student_name: '',
-    major: '',
-    user_id: localStorage.getItem('user_id'),
-  });
-
-
-  
-
-  const changeHandler = (event) => {
-    setStudent({ ...student, [event.target.name]: event.target.value });
-    console.log(event.target.value);
-  };
-
-  const submitForm = (event) => {
-    event.preventDefault();
-
-    axiosWithAuth()
-      .post(`/students`, student)
-      .then((res) => {
-        console.log("this is from post", res.data);
-        setStudent({
-          student_name: '',
-          major: '',
-          user_id: localStorage.getItem('user_id'),
-        });
-      })
-      .catch((err) => console.log(err.response));
-  };
-
-  const StyledForm = styled.form`
+const StyledForm = styled.form`
     width: 30%;
     height: 40vh;
     margin: auto 100px;
@@ -80,6 +48,37 @@ const StudentForm = (props) => {
       align-self: center;
 }
     `;
+const StudentForm = (props) => {
+  const [student, setStudent] = useState({
+    student_name: '',
+    major: '',
+    user_id: localStorage.getItem('user_id'),
+  });
+
+
+  
+
+  const changeHandler = (event) => {
+    setStudent({ ...student, [event.target.name]: event.target.value });
+    console.log(event.target.value);
+  };
+
+  const submitForm = (event) => {
+    event.preventDefault();
+
+    axiosWithAuth()
+      .post(`/students`, student)
+      .then((res) => {
+        console.log("this is from post", res.data);
+        setStudent({
+          student_name: '',
+          major: '',
+          user_id: localStorage.getItem('user_id'),
+        });
+      })
+      .catch((err) => console.log(err.response));
+  };
+
   return (
 
     <StyledForm onSubmit={submitForm}>
