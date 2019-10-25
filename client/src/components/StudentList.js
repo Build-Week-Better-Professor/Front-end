@@ -8,16 +8,18 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 
     const Container = styled.div`
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    // background-color: #457B9D;
+    background-color: #F8F9F7;
 `;
 const FormNav = styled.div`
+    margin-top:90px;
     display: flex;
     justify-content: space-evenly;
     align-items: end;
-    border: 2px solid gray;
     padding-bottom: 3%;
+    background-color: #F8F9F7;
 
     h2 {
         color:#F8F9F7;
@@ -25,29 +27,57 @@ const FormNav = styled.div`
     
 `;
 const StudentCard = styled.div`
-    width: 10%;
+    width: 270px;
+    // box-shadow: 0 0 10px 5px lightgray;
+    background-color: #F8F9F7;
     margin: 10px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    flex-wrap: wrap;
-    border: 2px solid #F8F9F7;
+    &:hover {
+        background: ${props => (props.primary ? "#457B9D" : "#fff")};
+        color: ${props => (props.primary ? "#fff" : "#457B9D")};
+        border: ${props =>
+        props.primary ? "2px solid #2a2223" : "2px solid #457B9D"};
+        }
+    button {
+        display:felx;
+        align-self: center;
+        width: 100px;
+        height: 30px;
+        background: ${props => (props.primary ? "#FFF" : "#457B9D")};
+        color: ${props => (props.primary ? "#457B9D" : "#FFF")};
+        border: 0;
+        margin: 5px 10px;
+        transition: 0.2s ease-in;
+        border: ${props =>
+            props.primary ? "2px solid #99f3eb" : "2px solid #457B9D"};
+        &:hover {
+            background: ${props => (props.primary ? "#457B9D" : "#fff")};
+            color: ${props => (props.primary ? "#fff" : "#457B9D")};
+            border: ${props =>
+            props.primary ? "2px solid #2a2223" : "2px solid #457B9D"};
+  }
+    }
     div {
-        height: 100px;
-        padding: 5px;
 
         h2, p {
-            color: #F8F9F7;
+            color: #457B9D;
+            margin: 5px;
+            text-decoration: none;
         }
-    }
 `;
 const DataContainer = styled.div`
+    width: 98%;
+    align-self: center;
+    padding: 10px 5px 30px 5px;
     display: flex;
     flex-wrap: wrap;
     // flex-direction: column;
-    justify-content: start;
+    justify-content: space-evenly;
     align-items: center;
-    background-color: #457B9D;
+    background-color: #223F68;
+    color: #457B9D;
 `;
 const StudentList = props => {
     const [students, setStudents] = useState([])
@@ -75,30 +105,29 @@ const StudentList = props => {
     })
     .catch(err => console.log(err.response));
   }
-  
+  console.log(localStorage.getItem('first_name'));
 
   return (
     <> 
     <Header />
+    <h1>Welcome!</h1>
     <Container>
-        
+        <h2>Add new students or click on them for details.</h2>
         <DataContainer>
     {students.map((element, index) => {
       console.log('ELEMENT',element);
             return (
-            <Link to= {`/student/${element.id}`}>
             <StudentCard key={index}>
+                <Link to= {`/student/${element.id}`}>
                 <div>
-                    <h3>{element.student_name}</h3>
+                    <h3>Name: {element.student_name}</h3>
                 </div>
                 <div>
-                    <h3>{element.major}</h3>
+                    <h3>Major: {element.major}</h3>
                 </div>
-                <div>
+                </Link>
                 <button onClick={() => deleteStudent(element.id)}>Delete</button>{''}
-                </div>
             </StudentCard>
-            </Link>
             );
         })}
         </DataContainer>

@@ -5,8 +5,8 @@ import styled from "styled-components";
 
 const StyledForm = styled.form`
  width: 50%;
- height: 40.5vh;
- margin: auto 100px;
+//  height: 40.5vh;
+//  margin: auto 100px;
  padding: 32px;
  font-weight: bold;
  background-color: #F8F9F7;
@@ -14,6 +14,7 @@ const StyledForm = styled.form`
  display: flex;
  flex-direction: column;
  justify-content: space-evenly;
+ margin-top: 10px;
 
  input {
      margin-bottom: 28px;
@@ -47,6 +48,15 @@ const StyledForm = styled.form`
    display: flex;
    align-self: center;
 }
+textarea {
+  margin-bottom: 28px;
+     padding: 0.5rem;
+     font-size: 16px;
+     width: 96%;
+     display: block;
+     color: #223F68;
+     border: 2px solid #223F68;
+}
  `;
 const Messages = props => {
 console.log('NEW', props);
@@ -62,6 +72,8 @@ const handleChange = event => {
   const handleSubmit = event => {
    event.preventDefault();
    props.postList(input)
+   //This sets it up to empty after submit
+   setInput({message: '', date: '', student_id: `${props.studentId}`})
   
 }
  const message = Object.keys(input)
@@ -80,7 +92,7 @@ const handleChange = event => {
     })} */}
     
     <StyledForm onSubmit={handleSubmit}>
-    <label >Student</label>
+    <label >Student ID (Automatic)</label>
     <input
     type="text" 
     name="student_id"
@@ -106,7 +118,7 @@ const handleChange = event => {
     onChange={handleChange}
     />
     
-    <button type="submit">Submit</button> 
+    <button type="submit">Send Messege</button> 
     </StyledForm>
     </>
     )

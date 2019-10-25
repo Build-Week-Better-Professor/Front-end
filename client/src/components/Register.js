@@ -9,12 +9,11 @@ const Register = () => {
         display: flex;
         flex-direction:column;
         align-items: center;
-        border: 2px solid gray;
         padding-bottom: 3%;
-        background-color: #457B9D;
 
         h2 {
-            color:#F8F9F7;
+            color:#83365c;
+            margin-bottom: 20px;
         }
         
     `;
@@ -23,7 +22,7 @@ const Register = () => {
     <Header />
     <RegisterPage>
         
-        <h2>Register to gain access to premium features today!</h2>
+        <h1>Register to gain access</h1>
         <RegisterForm />
     </RegisterPage>
     </> 

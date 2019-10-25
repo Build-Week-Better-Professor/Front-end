@@ -27,6 +27,7 @@ const login = event => {
         console.log('DATA',res.data);
         localStorage.setItem('token', res.data.token);
         localStorage.setItem('user_id', res.data.id);
+        localStorage.setItem('first_name', res.data.first_name);
         props.history.push('/')
     })
      
