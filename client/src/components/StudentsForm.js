@@ -81,8 +81,7 @@ const StudentForm = (props) => {
 }
     `;
   return (
-    <> 
-    
+
     <StyledForm onSubmit={submitForm}>
       <label >Student Name</label>
       <input
@@ -106,7 +105,6 @@ const StudentForm = (props) => {
       
        
     </StyledForm>
-    </>
   );
 };
 

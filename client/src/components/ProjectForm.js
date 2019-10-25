@@ -3,11 +3,10 @@ import styled from "styled-components";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const ProjectForm = (props) => {
-    console.log(props.studentID);
     const [project, setProject] = useState({
       project_name: '',
       deadline: '',
-      student_id: `${props.id}`
+      student_id: `${props.studentId}`
     });
   
     const changeHandler = (event) => {
@@ -25,7 +24,7 @@ const ProjectForm = (props) => {
           setProject({
             project_name: '',
             deadline: '',
-            student_id: `${props.id}`
+            student_id: `${props.studentId}`
           });
         })
         .catch((err) => console.log(err.response));
@@ -39,7 +38,6 @@ const ProjectForm = (props) => {
       font-weight: bold;
       background-color: #F8F9F7;
       color: #223F68;
-    //   box-shadow: 2px 2px 10px 10px #223F68;
       display: flex;
       flex-direction: column;
       justify-content: space-evenly;
