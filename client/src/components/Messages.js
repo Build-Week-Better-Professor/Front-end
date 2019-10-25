@@ -91,7 +91,7 @@ const handleChange = event => {
     })} */}
     
     <StyledForm onSubmit={handleSubmit}>
-    <label >Student ID (Automatic)</label>
+    <label >Student</label>
     <input
     type="text" 
     name="student_id"
