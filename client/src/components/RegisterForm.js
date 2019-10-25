@@ -64,7 +64,6 @@ const RegisterForm = () => {
     // sends form data to state via the state function passed down 
     const submitForm = event => {
       event.preventDefault();
-      validate();
       setFormData({ username: "", password: "", first_name: "", last_name: "",});
       axios.post('https://better-professor-backend.herokuapp.com/users/register', formData) 
               .then(res => console.log(res.data) )
