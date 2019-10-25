@@ -4,7 +4,12 @@
   background-color: #F8F9F7;
   
 }
-
+.main {
+  height: 100vh;
+}
+h1 {
+  color: #457B9D;
+}
 .App-logo {
   height: 40vmin;
 }
@@ -32,7 +37,7 @@ a, a:visited, a:hover, a:active {
   color: #223F68;
   div {
     background-color:#F8F9F7;
-    padding: 18px 40px;
+    padding: 10px 30px;
     &:hover {
       color: lightgray;
     }
@@ -54,7 +59,7 @@ a, a:visited, a:hover, a:active {
 
 .app-title {
   margin: 4rem 0 4rem 0;
-  color: #83365c;
+  color: #457B9D;
 }
 
 .login-form-div {
